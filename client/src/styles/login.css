@@ -1,0 +1,87 @@
+/* Center the login container on the page */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6b73ff, #000dff);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card for the login form */
+.login-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Title */
+.login-title {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form inputs */
+.login-input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.login-input:focus {
+  border-color: #000dff;
+  outline: none;
+}
+
+/* Login button */
+.login-button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #000dff;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-button:hover {
+  background: #6b73ff;
+}
+
+/* Error message */
+.login-error {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Footer with switch button */
+.login-footer {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.login-switch-btn {
+  background: none;
+  border: none;
+  color: #000dff;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 5px;
+  transition: color 0.3s;
+}
+
+.login-switch-btn:hover {
+  color: #6b73ff;
+}

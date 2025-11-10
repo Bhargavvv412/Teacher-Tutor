@@ -1,0 +1,137 @@
+/* Base Chat Styles */
+.card.chat {
+  display: grid;
+  grid-template-rows: 1fr auto; /* messages + inputbar */
+  height: 100%;                /* fixed height */
+  width: 100%;                  /* fill parent */
+  max-width: 100%;              /* prevent overflow */
+  border-radius: 16px;
+  background: linear-gradient(180deg, #111827, #0f172a);
+  border: 1px solid #22304d;
+  overflow: hidden;
+}
+
+/* mobile responsive adjustments */
+@media (max-width: 768px) {
+  .card.chat {
+    height: 70vh;   /* smaller on tablets/phones */
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card.chat {
+    height: 60vh;   /* even smaller on small phones */
+    border-radius: 8px;
+  }
+}
+
+
+/* Messages area */
+.messages {
+  padding: 16px;
+  overflow-y: auto;
+  max-height: calc(100vh - 160px);
+  scroll-behavior: smooth;
+}
+
+/* Input bar */
+.inputbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px;
+  border-top: 1px solid #22304d;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(6px);
+  position: sticky; 
+  bottom: 0;
+  z-index: 10;  
+}
+
+.textinput {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #22304d;
+  background: #0c1426;
+  color: #e5e7eb;
+  font-size: 15px;
+  position:sticky;
+}
+
+.textinput:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.4);
+}
+
+.send {
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: #3b82f6;
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.send:hover {
+  background: #2563eb;
+  transform: scale(1.05);
+}
+
+.send:active {
+  transform: scale(0.95);
+}
+
+/* --- Responsive Breakpoints --- */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .card.chat {
+    border-radius: 0;
+    height: calc(100vh - 64px); /* fills below topbar */
+  }
+
+  .messages {
+    max-height: calc(100vh - 64px - 80px);
+    padding: 12px;
+  }
+
+  .textinput {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .send {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .card.chat {
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .messages {
+    max-height: calc(100vh - 72px - 60px);
+    padding: 10px;
+  }
+
+  .textinput {
+    font-size: 13px;
+    padding: 8px 10px;
+    border-radius: 10px;
+  }
+
+  .send {
+    padding: 10px 12px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+}

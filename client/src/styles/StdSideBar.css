@@ -1,0 +1,96 @@
+/* === StdSideBar.css === */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+/* Panel blocks */
+.panel {
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--border);
+}
+
+.panel-title {
+  font-weight: 800;
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.panel-subtitle {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* Styled Select (dropdown for standards) */
+.styled-select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0c1426;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+}
+
+.styled-select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+/* Subject buttons */
+.subject-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.subject {
+  flex: 1 1 calc(50% - 6px);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.08s ease, background 0.2s ease, border 0.2s ease;
+}
+
+.subject:hover {
+  transform: translateY(-2px);
+  border-color: var(--blue);
+}
+
+.subject.math {
+  background: rgba(34, 197, 94, 0.12);
+}
+.subject.science {
+  background: rgba(59, 130, 246, 0.12);
+}
+.subject.english {
+  background: rgba(251, 191, 36, 0.12);
+}
+
+/* Selected subject */
+.subject.selected {
+  border: 2px solid var(--green);
+  background: rgba(34, 197, 94, 0.2);
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .sidebar {
+    display: none; /* Hide on mobile (like your rightbar setup) */
+  }
+}

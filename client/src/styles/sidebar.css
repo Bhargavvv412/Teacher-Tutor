@@ -1,0 +1,217 @@
+/* -------------------------
+   Theme variables (your existing colors)
+   ------------------------- */
+:root{
+  --bg:#0f172a;            /* slate-900 */
+  --panel:#111827;         /* gray-900 */
+  --panel-2:#0b1220;
+  --border:#22304d;
+  --text:#e5e7eb;          /* gray-200 */
+  --muted:#9ca3af;         /* gray-400 */
+  --green:#22c55e;
+  --yellow:#fbbf24;
+  --blue:#3b82f6;
+  --red:#ef4444;
+}
+
+/* -------------------------
+   Base reset & viewport behavior
+   ------------------------- */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  height: 100%;
+  margin: 0;
+  font-family: ui-rounded, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 20% 0%, #0b1220, #0f172a 60%);
+  color: var(--text);
+  /* prevent the browser page from scrolling — internal panels will scroll */
+  overflow: hidden;
+}
+
+/* -------------------------
+   App grid (topbar + main)
+   ------------------------- */
+.app {
+  height: 100vh;                     /* fill viewport */
+  display: grid;
+  grid-template-rows: 64px 1fr;      /* topbar fixed, main fills rest */
+}
+
+/* Topbar (keeps original look) */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(15,23,42,0.6);
+  backdrop-filter: blur(10px);
+  height: 64px;                      /* explicit height */
+  flex-shrink: 0;
+}
+
+/* -------------------------
+   Main area
+   ------------------------- */
+.main {
+  /* this is a grid with fixed columns */
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  gap: 16px;
+  padding: 16px;
+  /* critical: allow children to handle their own overflow */
+  min-height: 0;
+  height: calc(100vh - 64px);        /* explicit height to avoid page overflow */
+}
+
+/* -------------------------
+   SIDEBAR — only chat-list scrolls
+   ------------------------- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px;
+  background: var(--panel-2);
+  border-right: 1px solid var(--border);
+  border-radius: 12px;
+  height: 100%;            /* fill the column height */
+  min-height: 0;           /* IMPORTANT: allow children to overflow */
+  overflow: hidden;        /* sidebar container itself does not scroll */
+}
+
+/* New Chat button stays at top */
+.new-chat-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--blue);
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  flex-shrink: 0;          /* never shrink */
+}
+.new-chat-btn:hover { background: #2563eb; }
+
+/* Chat list area — this is the only scrolling region in the sidebar */
+.chat-list {
+  list-style: none;
+  padding: 6px 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* newest first (n -> 1) */
+  gap: 6px;
+  flex: 1;                 /* take remaining vertical space */
+  min-height: 0;           /* CRITICAL for flex children to allow internal scrolling */
+  overflow-y: auto;        /* only this scrolls */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* each chat item */
+.chat-list li {
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  transition: background 0.15s ease, transform 0.05s ease;
+  font-size: 14px;
+}
+.chat-list li:hover { background: #1e293b; transform: translateX(2px); }
+.chat-list .active { background: var(--blue); border-color: var(--blue); color: white; }
+
+/* -------------------------
+   CHAT (center column) — messages scroll here only
+   ------------------------- */
+.chat {
+  display: grid;
+  grid-template-rows: 1fr auto;  /* messages area + inputbar */
+  gap: 8px;
+  height: 100%;
+  min-height: 0;                 /* allow children to manage overflow */
+  overflow: hidden;              /* container doesn't create page scroll */
+  border-radius: 12px;
+}
+
+/* messages list — this should be the only scrolling region in the chat column */
+.messages {
+  padding: 16px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  min-height: 0;                 /* critical for grid/flex parents */
+}
+
+/* message bubbles (kept from your theme) */
+.bubble {
+  display: inline-block;
+  padding: 12px 14px;
+  border-radius: 16px;
+  margin: 8px 0;
+  max-width: 70%;
+  line-height: 1.4;
+}
+.bot { background: #053b2c; border: 1px solid #0d5b43; }
+.user { background: #1f2a44; border: 1px solid #2a3c66; margin-left: auto; }
+
+/* input bar (fixed at bottom of chat column) */
+.inputbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;                /* never shrink / constantly visible */
+}
+
+/* text input and send button */
+.textinput { flex: 1; background: #0c1426; border: 1px solid var(--border); color: var(--text); padding: 12px 14px; border-radius: 14px; }
+.send { padding: 12px 16px; border-radius: 14px; background: var(--blue); border: none; color: white; font-weight: 700; cursor: pointer; }
+
+/* -------------------------
+   RIGHTBAR — optional scroll inside
+   ------------------------- */
+.rightbar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 14px;
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;               /* rightbar scrolls internally if content is long */
+}
+
+/* -------------------------
+   Responsive adjustments (keep internal scroll behavior)
+   ------------------------- */
+@media (max-width: 1000px) {
+  .main { grid-template-columns: 220px 1fr 260px; padding: 12px; }
+}
+@media (max-width: 900px) {
+  .main { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; height: calc(100vh - 64px); }
+  .sidebar { display: none; } /* hide sidebar on small screens (optional) */
+  .rightbar { order: 3; }
+}
+
+.chat-actions {
+  float: right;
+  display: flex;
+  gap: 6px;
+}
+
+.chat-actions button {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.chat-actions button:hover {
+  color: red;
+}

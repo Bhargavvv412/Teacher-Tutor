@@ -1,0 +1,87 @@
+/* Center the signup container */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff6b6b, #ff0000);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card for signup form */
+.signup-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Title */
+.signup-title {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Inputs */
+.signup-input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.signup-input:focus {
+  border-color: #ff0000;
+  outline: none;
+}
+
+/* Button */
+.signup-button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #ff0000;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.signup-button:hover {
+  background: #ff6b6b;
+}
+
+/* Message */
+.signup-message {
+  color: green;
+  margin-top: 10px;
+}
+
+/* Footer */
+.signup-footer {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.signup-switch-btn {
+  background: none;
+  border: none;
+  color: #ff0000;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 5px;
+  transition: color 0.3s;
+}
+
+.signup-switch-btn:hover {
+  color: #ff6b6b;
+}
